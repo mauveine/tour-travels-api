@@ -27,7 +27,7 @@ class Travel extends Model
         'moods' => TravelMoods::class,
     ];
 
-    public static function boot()
+    public static function boot(): void
     {
         parent::boot();
         /**
