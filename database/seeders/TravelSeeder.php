@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Data\TravelMoods;
 use App\Models\Travel;
 use Illuminate\Database\Seeder;
-use App\Models\Tour;
-use App\Models\Data\TravelMoods;
 use Illuminate\Support\Facades\File;
 
 class TravelSeeder extends Seeder
@@ -44,7 +43,7 @@ class TravelSeeder extends Seeder
                 ]);
             }
         } else {
-            $this->command->error('The JSON file does not exist: ' . $jsonFile);
+            $this->command->error('The JSON file does not exist: '.$jsonFile);
         }
     }
 }

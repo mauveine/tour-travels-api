@@ -12,5 +12,6 @@ class TravelMoods extends Data
         public int $history = 0,
         public int $culture = 0,
         public int $party = 0,
-    ) { }
+    ) {
+    }
 }

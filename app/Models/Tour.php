@@ -15,7 +15,7 @@ class Tour extends Model
         'name',
         'startingDate',
         'endingDate',
-        'price'
+        'price',
     ];
 
     protected $casts = [

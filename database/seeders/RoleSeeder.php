@@ -2,10 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Data\TravelMoods;
 use App\Models\Role;
-use App\Models\Travel;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 
@@ -31,11 +28,11 @@ class RoleSeeder extends Seeder
             foreach ($roles as $role) {
                 Role::create([
                     'name' => $role['name'],
-                    'guard_name' => 'api'
+                    'guard_name' => 'api',
                 ]);
             }
         } else {
-            $this->command->error('The JSON file does not exist: ' . $jsonFile);
+            $this->command->error('The JSON file does not exist: '.$jsonFile);
         }
     }
 }

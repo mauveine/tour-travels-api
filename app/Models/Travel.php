@@ -41,7 +41,7 @@ class Travel extends Model
              * - automate it
              */
             /** @var User $model */
-            if(!$model->slug) {
+            if (! $model->slug) {
                 $model->slug = Str::slug($model->name);
             }
         });

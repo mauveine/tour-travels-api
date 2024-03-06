@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Enums\UserRoles;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,7 +18,7 @@ class UserSeeder extends Seeder
             ->state([
                 'email' => 'mauveine@protonmail.com',
                 'name' => 'Leonard',
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
             ])->afterCreating(function ($model) {
                 /** @var User $model */
                 $model->assignRole(UserRoles::Admin->value);
@@ -29,7 +28,7 @@ class UserSeeder extends Seeder
             ->state([
                 'email' => 'admin@domain.test',
                 'name' => 'Leonard',
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
             ])->afterCreating(function ($model) {
                 /** @var User $model */
                 $model->assignRole(UserRoles::Admin->value);

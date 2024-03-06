@@ -2,10 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Data\TravelMoods;
 use App\Models\Tour;
-use App\Models\Travel;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 
@@ -35,11 +32,11 @@ class TourSeeder extends Seeder
                     'name' => $tour['name'],
                     'startingDate' => $tour['startingDate'],
                     'endingDate' => $tour['endingDate'],
-                    'price' => $tour['price']
+                    'price' => $tour['price'],
                 ]);
             }
         } else {
-            $this->command->error('The JSON file does not exist: ' . $jsonFile);
+            $this->command->error('The JSON file does not exist: '.$jsonFile);
         }
     }
 }
