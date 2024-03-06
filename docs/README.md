@@ -1,4 +1,4 @@
-# Laravel hiring test
+# Laravel
 
 Create a Laravel APIs application. They will have both public and private endpoints with roles as well.
 

@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('travels', function (Blueprint $table) {
             $table->uuid('id')->primary()->unique();
+            /** Created by */
+            $table->foreignUuid('user_id')->nullable()->constrained('users');
+            $table->string('slug')->unique();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->text('description')->nullable();
+            $table->integer('numberOfDays');
+            $table->integer('numberOfNights')->virtualAs('numberOfDays - 1');
+            $table->jsonb('moods')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('travels');
     }
 };
