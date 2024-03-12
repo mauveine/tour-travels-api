@@ -13,8 +13,8 @@
 
 uses(
     Tests\TestCase::class,
-    // Illuminate\Foundation\Testing\RefreshDatabase::class,
-)->in('Feature');
+//     Illuminate\Foundation\Testing\RefreshDatabase::class,
+)->in('Feature', 'Unit', 'Integration');
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +27,9 @@ uses(
 |
 */
 
-expect()->extend('toBeOne', function () {
-    return $this->toBe(1);
-});
+//expect()->extend('toBeOne', function () {
+//    return $this->toBe(1);
+//});
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +42,9 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function generateUser(): \App\Models\User
 {
-    // ..
+    $user = \App\Models\User::factory()->create();
+    $user->assignRole(\App\Enums\UserRoles::Admin->value);
+    return $user;
 }

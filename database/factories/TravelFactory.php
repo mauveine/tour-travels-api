@@ -3,7 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\Data\TravelMoods;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Travel>
@@ -18,8 +20,9 @@ class TravelFactory extends Factory
     public function definition(): array
     {
         return [
-            'slug' => $this->faker->unique()->slug,
-            'name' => $this->faker->sentence,
+            'userId' => User::factory(),
+            'name' => $this->faker->unique()->sentence(),
+            'slug' => fn($attributes) => Str::slug($attributes['name']),
             'description' => $this->faker->paragraphs(3, true),
             'numberOfDays' => $this->faker->numberBetween(1, 14),
             'moods' => new TravelMoods(
@@ -29,6 +32,8 @@ class TravelFactory extends Factory
                 $this->faker->numberBetween(0, 100), // culture
                 $this->faker->numberBetween(0, 100)  // party
             ),
+            'created_at' => $this->faker->dateTimeBetween('-6 months'),
+            'updated_at' => fn($attributes) => $attributes['created_at']
         ];
     }
 }

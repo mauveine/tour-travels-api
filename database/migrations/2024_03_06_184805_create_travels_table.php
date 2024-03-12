@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('travels', function (Blueprint $table) {
             $table->uuid('id')->primary()->unique();
             /** Created by */
-            $table->foreignUuid('user_id')->nullable()->constrained('users');
+            $table->foreignUuid('userId')->nullable()->constrained('users');
             $table->string('slug')->unique();
             $table->string('name');
             $table->text('description')->nullable();
             $table->integer('numberOfDays');
-            $table->integer('numberOfNights')->virtualAs('numberOfDays - 1');
+            $table->integer('numberOfNights')->storedAs('numberOfDays - 1');
             $table->jsonb('moods')->nullable();
             $table->timestamps();
         });

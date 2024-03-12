@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Data\TravelMoods;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,13 +15,23 @@ class Travel extends Model
 
     protected $table = 'travels';
 
+    protected $appends = [
+        'numberOfNights',
+    ];
+
     protected $fillable = [
-        'user_id',
+        'userId',
         'slug',
         'name',
         'description',
         'numberOfDays',
         'moods',
+    ];
+
+    protected $hidden = [
+        'id',
+        'created_at',
+        'updated_at'
     ];
 
     protected $casts = [
@@ -54,6 +65,6 @@ class Travel extends Model
 
     public function createdBy()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'userId');
     }
 }
