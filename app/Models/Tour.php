@@ -53,24 +53,24 @@ class Tour extends Model
         return ! is_int($value) ? $value * 100 : $value;
     }
 
-    public function scopePriceFrom(Builder $query, $value)
+    public function scopePriceFrom(Builder $query, $value): void
     {
         $value = $this->convertPriceToInt($value);
         $query->where('price', '>=', $value);
     }
 
-    public function scopePriceTo(Builder $query, $value)
+    public function scopePriceTo(Builder $query, $value): void
     {
         $value = $this->convertPriceToInt($value);
         $query->where('price', '<=', $value);
     }
 
-    public function scopeDateFrom(Builder $query, $value)
+    public function scopeDateFrom(Builder $query, $value): void
     {
         $query->where('startingDate', '>=', $value);
     }
 
-    public function scopeDateTo(Builder $query, $value)
+    public function scopeDateTo(Builder $query, $value): void
     {
         $query->where('startingDate', '<=', $value);
     }
