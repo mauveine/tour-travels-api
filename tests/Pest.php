@@ -13,14 +13,13 @@
 
 uses(
     Tests\TestCase::class,
-//     Illuminate\Foundation\Testing\RefreshDatabase::class,
+    //     Illuminate\Foundation\Testing\RefreshDatabase::class,
 )->in('Unit', 'Integration');
 
 uses(
     Tests\TestCase::class,
-     Illuminate\Foundation\Testing\RefreshDatabase::class,
+    Illuminate\Foundation\Testing\RefreshDatabase::class,
 )->in('Feature');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -52,5 +51,6 @@ function generateUser(string $role): \App\Models\User
 {
     $user = \App\Models\User::factory()->create();
     $user->assignRole($role);
+
     return $user;
 }

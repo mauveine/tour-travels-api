@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Http\Requests\Travel;
+namespace App\Http\Requests\Tour;
 
-use App\Models\Travel;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Validation\Rule;
 
 class UpdateTourRequest extends BaseTourRequest
 {
     protected array $assignedMethod = ['PATCH', 'PUT'];
+
     protected array $requiredAttributes = [];
 
     /**
@@ -18,7 +16,8 @@ class UpdateTourRequest extends BaseTourRequest
     public function authorize(): bool
     {
         $user = Auth::user();
-        $travel = $this->route('travel');
-        return $user->can('update', $travel);
+        $tour = $this->route('tour');
+
+        return $user->can('update', $tour);
     }
 }

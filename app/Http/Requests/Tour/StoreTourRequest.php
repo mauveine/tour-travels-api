@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Requests\Travel;
+namespace App\Http\Requests\Tour;
 
-use App\Models\Travel;
+use App\Models\Tour;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Validation\Rule;
 
 class StoreTourRequest extends BaseTourRequest
 {
     protected array $assignedMethod = ['POST'];
+
     protected array $requiredAttributes = [
-        'name', 'numberOfDays'
+        'name', 'startingDate',
     ];
 
     /**
@@ -20,6 +19,8 @@ class StoreTourRequest extends BaseTourRequest
     public function authorize(): bool
     {
         $user = Auth::user();
-        return $user->can('create', Travel::class);
+        $travel = $this->route('travel');
+
+        return $user->can('create', Tour::class, $travel);
     }
 }

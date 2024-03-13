@@ -4,14 +4,13 @@ namespace App\Http\Requests\Travel;
 
 use App\Models\Travel;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Validation\Rule;
 
 class StoreTravelRequest extends BaseTravelRequest
 {
     protected array $assignedMethod = ['POST'];
+
     protected array $requiredAttributes = [
-        'name', 'numberOfDays'
+        'name', 'numberOfDays',
     ];
 
     /**
@@ -20,6 +19,7 @@ class StoreTravelRequest extends BaseTravelRequest
     public function authorize(): bool
     {
         $user = Auth::user();
+
         return $user->can('create', Travel::class);
     }
 }

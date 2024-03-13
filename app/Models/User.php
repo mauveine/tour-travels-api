@@ -14,7 +14,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, HasRoles, HasUuids, Notifiable;
 
-    protected $guard_name = "api";
+    protected $guard_name = 'api';
 
     protected $primaryKey = 'id';
 

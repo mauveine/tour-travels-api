@@ -23,12 +23,14 @@ class TourFactory extends Factory
             'name' => $this->faker->unique()->word,
             'startingDate' => function ($attributes) {
                 $travel = Travel::query()->find($attributes['travelId']);
+
                 return Carbon::createFromTimestamp(($this->faker->dateTimeBetween($travel->created_at))->getTimestamp());
             },
             'endingDate' => function ($attributes) {
                 $travel = Travel::query()->find($attributes['travelId']);
                 /** @var Carbon $startDate */
                 $startDate = $attributes['startingDate'];
+
                 return $startDate->addDays($travel->numberOfDays);
             },
             'price' => $this->faker->numberBetween(10000, 500000),

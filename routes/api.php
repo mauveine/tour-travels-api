@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\TravelController;
+use App\Http\Controllers\TravelTourController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TravelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +22,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
 
     Route::apiResource('travel', TravelController::class)->except(['index']);
-
+    Route::apiResource('travel/{travel}/tour', TravelTourController::class)->except(['index']);
 });
+
+Route::get('travel/{travel}/tour', [TravelTourController::class, 'index']);

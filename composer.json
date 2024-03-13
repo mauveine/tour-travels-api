@@ -11,12 +11,14 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "spatie/laravel-data": "^4.2",
+        "spatie/laravel-json-api-paginate": "^1.14",
         "spatie/laravel-permission": "^6.4",
         "spatie/laravel-query-builder": "^5.8"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.0",
         "brianium/paratest": "^7.4",
+        "driftingly/rector-laravel": "^1.0",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.14",
         "laravel/sail": "^1.18",

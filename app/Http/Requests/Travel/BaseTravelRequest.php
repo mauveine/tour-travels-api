@@ -11,7 +11,7 @@ abstract class BaseTravelRequest extends BaseRequest
         return [
             'slug' => [
                 'string',
-                'max:255'
+                'max:255',
             ],
             'name' => [
                 'string',
@@ -19,15 +19,15 @@ abstract class BaseTravelRequest extends BaseRequest
             ],
             'description' => [
                 'nullable',
-                'string'
+                'string',
             ],
             'numberOfDays' => [
                 'numeric',
-                'gt:0'
+                'gt:0',
             ],
             'moods' => [
-                'array:nature,relax,history,culture,party'
-            ]
+                'array:nature,relax,history,culture,party',
+            ],
         ];
     }
 }

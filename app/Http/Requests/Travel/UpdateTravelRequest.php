@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 class UpdateTravelRequest extends BaseTravelRequest
 {
     protected array $assignedMethod = ['PATCH', 'PUT'];
+
     protected array $requiredAttributes = [];
 
     /**
@@ -16,6 +17,7 @@ class UpdateTravelRequest extends BaseTravelRequest
     {
         $user = Auth::user();
         $travel = $this->route('travel');
+
         return $user->can('update', $travel);
     }
 }

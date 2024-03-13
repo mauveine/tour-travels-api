@@ -2,14 +2,12 @@
 
 namespace App\Http\Requests\Travel;
 
-use App\Models\Travel;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Validation\Rule;
 
 class DeleteTravelRequest extends BaseTravelRequest
 {
     protected array $assignedMethod = ['GET'];
+
     protected array $requiredAttributes = [];
 
     /**
@@ -19,6 +17,7 @@ class DeleteTravelRequest extends BaseTravelRequest
     {
         $user = Auth::user();
         $travel = $this->route('travel');
+
         return $user->can('delete', $travel);
     }
 }

@@ -1,14 +1,16 @@
 <?php
+
 use App\Models\Travel;
 
 describe('Travel API', function () {
     it('is protected from unauthenticated requests', function () {
-        $travel = Travel::factory()->create();
+        $travel = Travel::factory()->make();
 
         $response = $this->json('POST', 'api/travel', $travel->toArray());
         $response->assertUnauthorized();
 
-        $travel = Travel::query()->first();
+        $travel->save();
+        $travel->refresh();
         $response = $this->json('GET', sprintf('api/travel/%s', $travel->slug));
         $response->assertUnauthorized();
 
@@ -36,7 +38,7 @@ describe('Travel API', function () {
             'description' => $travel->description,
             'numberOfDays' => $travel->numberOfDays,
             'numberOfNights' => $travel->numberOfNights,
-            'moods' => $travel->moods->toArray()
+            'moods' => $travel->moods->toArray(),
         ]);
     });
 
@@ -57,7 +59,7 @@ describe('Travel API', function () {
             'description' => $travel->description,
             'numberOfDays' => $travel->numberOfDays,
             'numberOfNights' => $travel->numberOfNights,
-            'moods' => $travel->moods->toArray()
+            'moods' => $travel->moods->toArray(),
         ]);
     });
 
@@ -70,7 +72,7 @@ describe('Travel API', function () {
 
         $description = fake()->sentence();
         $response = $this->json('PATCH', sprintf('api/travel/%s', $travel->slug), [
-            'description' => $description
+            'description' => $description,
         ]);
         $response->assertOk();
         expect($response->getContent())->toBeJson();
@@ -81,7 +83,7 @@ describe('Travel API', function () {
             'description' => $description,
             'numberOfDays' => $travel->numberOfDays,
             'numberOfNights' => $travel->numberOfNights,
-            'moods' => $travel->moods->toArray()
+            'moods' => $travel->moods->toArray(),
         ]);
     });
 

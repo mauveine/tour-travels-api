@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Data\TravelMoods;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -21,7 +20,7 @@ class TravelFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->sentence(),
-            'slug' => fn($attributes) => Str::slug($attributes['name']),
+            'slug' => fn ($attributes) => Str::slug($attributes['name']),
             'description' => $this->faker->paragraphs(3, true),
             'numberOfDays' => $this->faker->numberBetween(1, 14),
             'moods' => new TravelMoods(
@@ -33,7 +32,7 @@ class TravelFactory extends Factory
             ),
             'public' => true,
             'created_at' => $this->faker->dateTimeBetween('-6 months'),
-            'updated_at' => fn($attributes) => $attributes['created_at']
+            'updated_at' => fn ($attributes) => $attributes['created_at'],
         ];
     }
 }

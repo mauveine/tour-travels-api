@@ -24,6 +24,7 @@ class TourSeeder extends Seeder
             // Decode JSON content
             $tours = json_decode($jsonContent, true);
 
+            Tour::unguard();
             // Create tours from the JSON data
             foreach ($tours as $tour) {
                 Tour::create([
@@ -35,6 +36,7 @@ class TourSeeder extends Seeder
                     'price' => $tour['price'],
                 ]);
             }
+            Tour::reguard();
         } else {
             $this->command->error('The JSON file does not exist: '.$jsonFile);
         }

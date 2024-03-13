@@ -1,7 +1,6 @@
 <?php
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
-use function Pest\Faker\fake;
 
 describe(\App\Models\Tour::class, function () {
     it('has travel relationship model', function () {

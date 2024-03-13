@@ -22,7 +22,7 @@ class TravelResource extends JsonResource
             'numberOfNights' => $this->numberOfNights,
             'moods' => $this->moods->toArray(),
             'public' => $this->public,
-            'tours' => TourResource::collection($this->whenLoaded('tours'))
+            'tours' => TourResource::collection($this->whenLoaded('tours')),
         ];
     }
 }

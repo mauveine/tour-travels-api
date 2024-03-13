@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Models\Data\TravelMoods;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -31,12 +30,12 @@ class Travel extends Model
     protected $hidden = [
         'id',
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
     protected $casts = [
         'moods' => TravelMoods::class,
-        'public' => 'boolean'
+        'public' => 'boolean',
     ];
 
     public function getRouteKeyName(): string

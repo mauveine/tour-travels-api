@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Tour;
 
 use App\Http\Requests\BaseRequest;
-use App\Models\User;
+use App\Models\Travel;
 use Illuminate\Validation\Rule;
 
 abstract class BaseTourRequest extends BaseRequest
@@ -11,25 +11,23 @@ abstract class BaseTourRequest extends BaseRequest
     public function defaultRules(): array
     {
         return [
-            'slug' => [
-                'string',
-                'max:255'
+            'travelId' => [
+                'uuid',
+                Rule::exists(Travel::class, 'id'),
             ],
             'name' => [
                 'string',
                 'max:255',
             ],
-            'description' => [
-                'nullable',
-                'string'
+            'startingDate' => [
+                'date',
             ],
-            'numberOfDays' => [
+            'endingDate' => [
+                'date',
+            ],
+            'price' => [
                 'numeric',
-                'gt:0'
             ],
-            'moods' => [
-                'array:nature,relax,history,culture,party'
-            ]
         ];
     }
 }
