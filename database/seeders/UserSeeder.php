@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
             ])->afterCreating(function ($model) {
                 /** @var User $model */
                 $model->assignRole(UserRoles::Admin->value);
-            });
+            })->create();
 
         User::factory()
             ->state([
@@ -32,6 +32,6 @@ class UserSeeder extends Seeder
             ])->afterCreating(function ($model) {
                 /** @var User $model */
                 $model->assignRole(UserRoles::Admin->value);
-            });
+            })->create();
     }
 }
