@@ -22,9 +22,9 @@ describe(\App\Models\Travel::class, function () {
             ->and($tours)->toHaveCount($toursCount);
     });
 
-    it('has createdBy relationship model', function () {
-        $travel = \App\Models\Travel::factory()->has(\App\Models\User::factory(), 'createdBy')->create();
-        $travelLoaded = \App\Models\Travel::query()->with('createdBy')->find($travel->id);
-        expect($travelLoaded->createdBy)->not()->toBeNull()->and($travelLoaded->createdBy)->toBeInstanceOf(\App\Models\User::class);
-    });
+//    it('has createdBy relationship model', function () {
+//        $travel = \App\Models\Travel::factory()->has(\App\Models\User::factory(), 'createdBy')->create();
+//        $travelLoaded = \App\Models\Travel::query()->with('createdBy')->find($travel->id);
+//        expect($travelLoaded->createdBy)->not()->toBeNull()->and($travelLoaded->createdBy)->toBeInstanceOf(\App\Models\User::class);
+//    });
 });

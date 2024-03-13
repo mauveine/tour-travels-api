@@ -14,7 +14,13 @@
 uses(
     Tests\TestCase::class,
 //     Illuminate\Foundation\Testing\RefreshDatabase::class,
-)->in('Feature', 'Unit', 'Integration');
+)->in('Unit', 'Integration');
+
+uses(
+    Tests\TestCase::class,
+     Illuminate\Foundation\Testing\RefreshDatabase::class,
+)->in('Feature');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +48,9 @@ uses(
 |
 */
 
-function generateUser(): \App\Models\User
+function generateUser(string $role): \App\Models\User
 {
     $user = \App\Models\User::factory()->create();
-    $user->assignRole(\App\Enums\UserRoles::Admin->value);
+    $user->assignRole($role);
     return $user;
 }

@@ -20,7 +20,6 @@ class TravelFactory extends Factory
     public function definition(): array
     {
         return [
-            'userId' => User::factory(),
             'name' => $this->faker->unique()->sentence(),
             'slug' => fn($attributes) => Str::slug($attributes['name']),
             'description' => $this->faker->paragraphs(3, true),
@@ -32,6 +31,7 @@ class TravelFactory extends Factory
                 $this->faker->numberBetween(0, 100), // culture
                 $this->faker->numberBetween(0, 100)  // party
             ),
+            'public' => true,
             'created_at' => $this->faker->dateTimeBetween('-6 months'),
             'updated_at' => fn($attributes) => $attributes['created_at']
         ];

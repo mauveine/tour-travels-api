@@ -20,12 +20,12 @@ class Travel extends Model
     ];
 
     protected $fillable = [
-        'userId',
         'slug',
         'name',
         'description',
         'numberOfDays',
         'moods',
+        'public',
     ];
 
     protected $hidden = [
@@ -36,7 +36,18 @@ class Travel extends Model
 
     protected $casts = [
         'moods' => TravelMoods::class,
+        'public' => 'boolean'
     ];
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
+    public function getNumberOfNightsAttribute(): int
+    {
+        return $this->attributes['numberOfNights'] ?? $this->attributes['numberOfDays'] - 1;
+    }
 
     public static function boot(): void
     {
@@ -61,10 +72,5 @@ class Travel extends Model
     public function tours()
     {
         return $this->hasMany(Tour::class, 'travelId');
-    }
-
-    public function createdBy()
-    {
-        return $this->belongsTo(User::class, 'userId');
     }
 }

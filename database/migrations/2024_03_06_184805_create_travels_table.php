@@ -13,14 +13,13 @@ return new class extends Migration
     {
         Schema::create('travels', function (Blueprint $table) {
             $table->uuid('id')->primary()->unique();
-            /** Created by */
-            $table->foreignUuid('userId')->nullable()->constrained('users');
             $table->string('slug')->unique();
             $table->string('name');
             $table->text('description')->nullable();
             $table->integer('numberOfDays');
             $table->integer('numberOfNights')->storedAs('numberOfDays - 1');
-            $table->jsonb('moods')->nullable();
+            $table->jsonb('moods');
+            $table->boolean('public')->default(false);
             $table->timestamps();
         });
     }

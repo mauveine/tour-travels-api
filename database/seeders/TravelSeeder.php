@@ -40,6 +40,7 @@ class TravelSeeder extends Seeder
                         $travel['moods']['culture'],
                         $travel['moods']['party']
                     ),
+                    'public' => true
                 ]);
             }
         } else {

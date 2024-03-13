@@ -11,16 +11,19 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "spatie/laravel-data": "^4.2",
-        "spatie/laravel-permission": "^6.4"
+        "spatie/laravel-permission": "^6.4",
+        "spatie/laravel-query-builder": "^5.8"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.0",
+        "brianium/paratest": "^7.4",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.14",
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
         "pestphp/pest": "^2.0",
+        "pestphp/pest-plugin-faker": "^2.0",
         "pestphp/pest-plugin-laravel": "^2.0",
         "rector/rector": "^1.0",
         "spatie/laravel-ignition": "^2.0"
