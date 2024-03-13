@@ -19,7 +19,7 @@ return RectorConfig::configure()
     // uncomment to reach your current PHP version
     // ->withPhpSets()
     ->withRules([
-        AddVoidReturnTypeWhereNoReturnRector::class
+        AddVoidReturnTypeWhereNoReturnRector::class,
     ])
     ->withSets([
         LaravelSetList::LARAVEL_100,
